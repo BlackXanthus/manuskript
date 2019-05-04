@@ -12,10 +12,8 @@ from manuskript.ui.views.outlineDelegates import outlineTitleDelegate, outlineCh
 
 class outlineView(QTreeView, dndView, outlineBasics):
 
-	
-
     def __init__(self, parent=None, modelCharacters=None, modelLabels=None, modelStatus=None):
-        QTreeView.__init__(self,parent)
+        QTreeView.__init__(self, parent)
         dndView.__init__(self)
         outlineBasics.__init__(self, parent)
 
@@ -38,7 +36,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
         self.modelStatus = model
 
     def setModel(self, model):
-        QTreeView.setModel(self,model)
+        QTreeView.setModel(self, model)
 
         # Setting delegates
         self.outlineTitleDelegate = outlineTitleDelegate(self)
@@ -60,11 +58,7 @@ class outlineView(QTreeView, dndView, outlineBasics):
 
 		#Changed Resize Model on the Title.
 		#This ensures that everything can be seen when a character's name is too long
-		#Old Code Below:
-        #self.header().setSectionResizeMode(Outline.title, QHeaderView.Stretch)
-		#New Code Below:
         self.header().setSectionResizeMode(Outline.title,QHeaderView.ResizeToContents)
-
         self.header().setSectionResizeMode(Outline.POV, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.status, QHeaderView.ResizeToContents)
         self.header().setSectionResizeMode(Outline.label, QHeaderView.ResizeToContents)
@@ -91,8 +85,8 @@ class outlineView(QTreeView, dndView, outlineBasics):
 
     def dragMoveEvent(self, event):
         dndView.dragMoveEvent(self, event)
-        QTreeView.dragMoveEvent(self,event)
+        QTreeView.dragMoveEvent(self, event)
 
     def mouseReleaseEvent(self, event):
-        QTreeView.mouseReleaseEvent(self,event)
+        QTreeView.mouseReleaseEvent(self, event)
         outlineBasics.mouseReleaseEvent(self, event)
